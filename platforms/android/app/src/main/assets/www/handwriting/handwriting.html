@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Citizen Literacy - Handwriting ch</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" -->
+    <link rel="stylesheet" href="../css/style_main.css">
+ <script src="script.js"></script>
+<!-- link rel="stylesheet" href="./ime_files/academicons.min.css"   crossorigin="anonymous">
+<link rel="stylesheet" href="./ime_files/all.css"   crossorigin="anonymous">
+<link rel="stylesheet" href="./ime_files/jquery.fancybox.min.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="./ime_files/github.min.css" crossorigin="anonymous" title="hl-light">
+<link rel="stylesheet" href="./ime_files/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled="">
+<link rel="stylesheet" href="./ime_files/leaflet.css"   crossorigin="anonymous">
+<link rel="stylesheet" href="./ime_files/css">
+<link rel="stylesheet" href="./ime_files/academic.min.257a17974a90488a98e8ae4e5c165b03.css">
+<link rel="stylesheet" href="./ime_files/academic.81aa2d805c57351ca4c4198309c10bf9.css" -->
+ 
+ 
+ 
+<meta name="theme-color" content="#ffffff">
+<!--<script defer="" async="" type="text/javascript">
+  function createCORSRequest(method, url) {
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
+      
+      xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined") {
+      
+      xhr = new XDomainRequest();
+      xhr.open(method, url);
+    } else {
+      
+      xhr = null;
+    }
+    return xhr;
+  }
+
+  
+  var xhr = createCORSRequest('GET', "https://stocksystem.herokuapp.com/api/name");
+  if (!xhr) {
+    console.log('CORS not supported');
+  }
+  xhr.onload = function() {};
+  xhr.onerror = function() {
+    console.log('error making CORS request.');
+  };
+  xhr.send();
+</script>-->
+ 
+<!--<script async="" src="./ime_files/embed.js.download" data-timestamp="1565687229665"></script>
+<link rel="prefetch" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.346fd02dbcf9d588f59163c058630773.css">
+<link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.acf69d2bb802474bc8859793fe2f8853.js">
+<link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.0f389bbb05bb95b1f993610bd52057d3.js">
+<link rel="prefetch" as="script" href="https://disqus.com/next/config.js">-->
+
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="inactive" id="response-correct-wrapper">
+            <div class="correct-container" id="response-correct-container">
+            <img src="../img/correct.png" alt="" class="correct-tick">
+                <div class="second-row">
+                    <button class="btn-third" onclick="retryCorrect()">
+                        <img src="../img/retry.png" alt="" class="correct-retry">
+                    </button>
+                    <span class="separate" id="instance-2"></span>
+                    <button class="btn-third" onclick="nextUrl()">
+                        <img src="../img/next.png" alt="" class="correct-next">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="inactive" id="response-incorrect-wrapper">
+            <div class="incorrect-container" id="response-incorrect-container">
+                <img src="../img/sad.png" alt="" class="incorrect-tick">
+                <div class="second-row">
+                    <button class="btn-third btn-incorrect" onclick="retryIncorrect()">
+                        <img src="../img/retry.png" alt="" class="incorrect-retry">
+                    </button>
+                    <span class="separate" id="instance-2"></span>
+                    <button class="btn-third btn-incorrect" onclick="nextUrl()">
+                        <img src="../img/help.png" alt="" class="incorrect-next">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="header-container">
+            <a href="../index.html">
+                <i class="left"></i>
+                <img src="../img/home.png" alt="Home Button" class="home-link">
+            </a>
+            <img src="../img/logo_white.png" alt="=Logo White" class="header-logo">
+        </div>
+
+        <h1 class="title">Try handwriting put in quiz querstring for dynamic handwriting</h1>
+
+        
+
+<article class="article" itemscope="" itemtype="http://schema.org/Article">
+  
+  <div class="article-container">
+    <div class="article-style" itemprop="articleBody">
+      
+      
+     <p id="demo"></p
+      ><div> <!-- span style="display : inline-block"> PenSize <span id="lineWidth">3</span>
+        <input type="range" id="penSize" min="1" max="30" value="3" -->
+       <button  class="btn-secondary" onclick="sayit(quiz)">Play word</button>
+        <button  class="btn-secondary" onclick="canvas.erase();">Clear</button>
+        <button  class="btn-secondary" onclick="canvas.setOptions({numOfReturn : 2}); canvas.recognize();">Check my writing</button>
+        <!--button onclick="canvas.undo()">Undo</button -->
+        <!-- button onclick="canvas.redo()">Redo</button -->
+       
+        <canvas id="canvas" width="400" height="400" style="border: 2px solid; cursor: crosshair;"></canvas>
+       
+        <!-- form>
+          Language:
+          <select id="language" >
+            <option value="zh_TW">Chinese</option>
+           <option value="ja">Japanese</option>
+            <option  selected="selected" value="en">English</option>
+          </select>
+        </form>-->
+       
+        <span id="result" style="display:none"></span> </span> 
+        
+      </div>
+    </div>
+     
+    
+    
+  </div>
+</article>
+
+<!-- script src="./ime_files/jquery.min.js.download"   crossorigin="anonymous"></script> 
+<script src="./ime_files/imagesloaded.pkgd.min.js.download"   crossorigin="anonymous"></script> 
+<script src="./ime_files/isotope.pkgd.min.js.download"   crossorigin="anonymous"></script> 
+<script src="./ime_files/jquery.fancybox.min.js.download"  crossorigin="anonymous"></script> 
+<script src="./ime_files/highlight.min.js.download"   crossorigin="anonymous"></script> 
+<script src="./ime_files/leaflet.js.download"   crossorigin="anonymous"></script> 
+<script src="./ime_files/fuse.min.js.download"   crossorigin="anonymous"></script> 
+<script src="./ime_files/jquery.mark.min.js.download"   crossorigin="anonymous"></script --> 
+
+<div class="container">
+  
+   
+</div>
+<!--<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+      </div>
+     
+     
+      </div>
+    </div>
+  </div>-->
+</div>
+ 
+
+        <script src="../js/main.js"></script>
+        <!-- script src="../js/handwriting.js"></script -->
+    </div>
+     <script type="text/javascript" src="handwriting.canvas.js"></script> 
+        <script type="text/javascript" defer="">
+    var canvas = new handwriting.Canvas(document.getElementById('canvas'), 3);
+	canvas.setOptions({numOfReturn : 2});
+	console.log(canvas.options); 
+       canvas.setLineWidth(10);
+	   console.log('line width is '+canvas.lineWidth);
+	   canvas.setOptions({language:"en"});
+	console.log(canvas.options); 
+       
+    var width = document.getElementById("demo").clientWidth
+    canvas.cxt.canvas.width  = width < 400 ? width : 400;
+    canvas.cxt.canvas.height = width < 400 ? width : 400;
+    canvas.setCallBack(function(data, err) {
+      if (err) throw err;
+      else document.getElementById("result").innerHTML = data;
+	  //alert(data);
+	    var word = GetUrlValue('quiz');
+		console.log('word is ' + word);
+	  //var word = "sat";
+	 	 if (data.includes(word)) {
+		 var msg = new SpeechSynthesisUtterance("Excellent; your handwriting is correct. Well done.");     msg.lang = "en-GB";    window.speechSynthesis.speak(msg);
+		  }
+	  else { 
+	   var msg = new SpeechSynthesisUtterance("Please try that again; you're nearly there.");     msg.lang = "en-GB";    window.speechSynthesis.speak(msg); }
+    });
+    canvas.set_Undo_Redo(true, true);
+	<!-- commented out the below cos we arent using pensize options..-->
+   <!--  var penSize = document.getElementById("penSize"); -->
+     <!-- penSize.addEventListener("mousemove", function(){ -->
+		 <!-- document.getElementById("lineWidth").innerHTML = penSize.value;   -->  
+		 <!-- }); -->
+     <!-- penSize.addEventListener("change", function(){ -->
+		 <!-- canvas.setLineWidth(penSize.value); -->
+		 <!-- }); -->
+		function changeImage(a) {document.getElementById("scoreimg").src=a;}
+	
+  </script>
+</body>
+
+</html>

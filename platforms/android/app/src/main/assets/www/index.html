@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Citizen Literacy - Home</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="css/style_main.css">
+</head>
+
+<body onload="fadeIn()">
+    <div class="container">
+        <div class="header-container">
+            <h2 class="heading">Citizen Literacy</h2>
+        </div>
+
+        <div class="card-container">
+
+            <div class="card" id="voice" onclick="voiceUrl()">
+                <img src="img/mic.png" class="title-image" alt="Voice Activity">
+                <div class="link-container">
+                    <h2 class="sub-heading link">Voice Title
+                        <i class="right"></i>
+                    </h2>
+                </div>
+            </div>
+
+            <div class="card" id="audio" onclick="selectionUrl()">
+                <img src="img/ear.png" class="title-image" alt="Audio Activity">
+                <div class="link-container">
+                    <h2 class="sub-heading link">Audio Title
+                        <i class="right"></i>
+                    </h2>
+                </div>
+            </div>
+
+            <div class="card" id="handwriting" onclick="handwritingUrl()">
+                <img src="img/touch.png" class="title-image" alt="Handwriting Activity">
+                <div class="link-container">
+                    <h2 class="sub-heading link">Handwriting Title
+                        <i class="right"></i>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/main.js"></script>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+{
+    "name": "com.microphonics.speechrecog",
+    "displayName": "speechrecog",
+    "version": "1.0.0",
+    "description": "A sample Apache Cordova application that responds to the deviceready event.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Apache Cordova Team",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "cordova-android": "^7.0.0",
+        "cordova-plugin-device": "^2.0.3",
+        "cordova-plugin-screen-orientation": "^3.0.2",
+        "cordova-plugin-tts": "^0.2.3",
+        "cordova-plugin-whitelist": "^1.3.4",
+        "es6-promise-plugin": "^4.2.2",
+        "org.apache.cordova.plugin.speechrecognizer-master": "file:../../org.apache.cordova.plugin.speechrecognizer-master"
+    },
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-screen-orientation": {},
+            "cordova-plugin-device": {},
+            "org.apache.cordova.plugin.speechrecognizer": {},
+            "cordova-plugin-tts": {}
+        },
+        "platforms": [
+            "android"
+        ]
+    }
+}

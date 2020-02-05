@@ -1,0 +1,92 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        
+    </style>
+    </head>
+<body>
+    <script src="http://micro-phonics.com/wip/dsa/demo/ocr/ocrad.js"></script>
+		<div id="demo">
+			<canvas  style="border:1px solid grey;" id='c' class="" width="300" height="150"></canvas>
+			<div class="output">
+				<div id="output">
+					<div id="text"></div>
+					<span id="timing"></span>
+				</div>
+			</div>
+		</div>
+    <script type="text/javascript">
+        var c = document.getElementById('c'),
+    o = c.getContext('2d');
+
+function reset_canvas(){
+    o.fillStyle = 'white'
+    o.fillRect(0, 0, c.width, c.height)
+    o.fillStyle = 'black'	
+}
+
+var drag = false, lastX, lastY;
+c.onmousedown = function(e){ drag = true; lastX = 0; lastY = 0; e.preventDefault(); c.onmousemove(e) }
+c.onmouseup   = function(e){ drag = false; e.preventDefault(); runOCR() }
+c.onmousemove = function(e){
+    e.preventDefault()
+    var rect = c.getBoundingClientRect();
+    var r = 5;
+    
+    function dot(x, y){
+        o.beginPath()
+        o.moveTo(x + r, y)
+        o.arc(x, y, r, 0, Math.PI * 2)
+        o.fill()
+    }
+    if(drag){
+        var x = e.clientX - rect.left, 
+            y = e.clientY - rect.top;
+        
+        if(lastX && lastY){
+            var dx = x - lastX, dy = y - lastY;
+            var d = Math.sqrt(dx * dx + dy * dy);
+            for(var i = 1; i < d; i += 2){
+                dot(lastX + dx / d * i, lastY + dy / d * i)
+            }
+        }
+        dot(x, y)
+        
+        lastX = x;
+        lastY = y;
+    }
+}
+
+
+document.body.ondragover = function(){ document.body.className = 'dragging'; return false }
+document.body.ondragend = function(){ document.body.className = ''; return false }
+document.body.onclick = function(){document.body.className = '';}
+document.body.ondrop = function(e){
+    e.preventDefault();
+    document.body.className = '';
+    picked_file(e.dataTransfer.files[0]);
+    return false;
+}
+
+function open_picker(){
+    var e = document.createEvent("MouseEvents");	
+    e.initEvent('click', true, true);
+    document.getElementById('picker').dispatchEvent(e);
+}
+function runOCR(image_data, raw_feed){
+    var response = OCRAD(c);
+    
+    if('innerText' in document.getElementById("text")){
+        document.getElementById("text").innerText = response;
+    }else{
+        document.getElementById("text").textContent = response;
+    }
+    
+}
+reset_canvas()
+    </script>
+</body>
+</html>

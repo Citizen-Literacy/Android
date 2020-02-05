@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Citizen Literacy - Audio</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style_main.css">
+</head>
+
+<body onload="init(), fadeIn()">
+
+    <h1>Send an audio file to remote server</h1>
+	
+    <div>
+		<form onsubmit="event.preventDefault(); return sendFormData(this);">
+			<input class="btn-main" type="file" name="audio_file" accept="audio/*" required /><br><br>
+			<input type="submit" value="Upload" class="btn-main" />
+		</form>
+		
+		<div id="response-container"></div>
+    </div>
+	
+    <script src="../js/main.js"></script>
+    <script src="../js/audio.js"></script>
+
+</body>
+
+</html>

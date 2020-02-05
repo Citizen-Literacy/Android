@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Citizen Literacy - Voice Recording</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="css/style_main.css">
+      <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="SpeechRecognizer.js"></script>
+</head>
+
+<body onload="fadeIn()">
+    <div class="container">
+
+
+        <div class="inactive" id="response-correct-wrapper">
+            <div class="correct-container" id="response-correct-container">
+                <img src="img/correct.png" alt="" class="correct-tick">
+                <div class="second-row">
+                    <button class="btn-third" onclick="retryCorrect()">
+                        <img src="img/retry.png" alt="" class="correct-retry">
+                    </button>
+                    <span class="separate" id="instance-2"></span>
+                    <button class="btn-third" onclick="nextUrl()">
+                        <img src="img/next.png" alt="" class="correct-next">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="inactive" id="response-incorrect-wrapper">
+            <div class="incorrect-container" id="response-incorrect-container">
+                <img src="img/sad.png" alt="" class="incorrect-tick">
+                <div class="second-row">
+                    <button class="btn-third btn-incorrect" onclick="retryIncorrect()">
+                        <img src="img/retry.png" alt="" class="incorrect-retry">
+                    </button>
+                    <span class="separate" id="instance-2"></span>
+                    <button class="btn-third btn-incorrect" onclick="nextUrl()">
+                        <img src="img/help.png" alt="" class="incorrect-next">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="header-container">
+            <a href="index.html">
+                <i class="left"></i>
+                <img src="img/home.png" alt="Home Button" class="home-link">
+            </a>
+            <img src="img/logo_white.png" alt="=Logo White" class="header-logo">
+        </div>
+        
+        <p class="title">Click microphone and say the word you see, below.</p>
+ <script type="text/javascript">
+
+            function onDeviceReady(){
+                alert("Device is ready");
+				
+				document.getElementById("whoami").innerHTML = quiz;
+            }
+
+            function recognizeSpeech() {
+                var maxMatches = 2;
+                var promptString = "Speak now";	// optional
+                var language = "en-US";						// optional
+                navigator.SpeechRecognizer.startRecognize(function(result){
+                    alert(result);
+                }, function(errorMessage){
+                    console.log("Error message: " + errorMessage);
+                }, maxMatches, promptString, language);
+            }
+
+            // Show the list of the supported languages
+            function getSupportedLanguages() {
+                navigator.SpeechRecognizer.getSupportedLanguages(function(languages){
+                    // display the json array
+                    alert(languages);
+                }, function(error){
+                    alert("Could not retrieve the supported languages : " + error);
+                });
+            }
+
+            document.addEventListener("deviceready", onDeviceReady, true);
+        </script>
+
+        <!--button onclick="recognizeSpeech();">Start recognition</button-->
+        <!-- button onclick="getSupportedLanguages();">Get Supported Languages</button-->
+<h1 id="whoami" class="hints">word</h1>
+
+        <div class="content">
+            <div id="container">
+
+                <!--<div class="load-pie">
+                    <div class="load-left">
+                        <div class="left-load-block" id="left-load"> </div>
+                    </div>
+                    <div class="load-right">
+                        <div class="right-load-block" id="right-load"> </div>
+                    </div>
+                </div>-->
+            </div>
+<!-- <h1>Speech checker - add in querystring to this.</h1>
+--> <!-- <button onClick="speakit()">speak </button> -->
+
+   
+            <button id="record" class="btn-main" > 
+            <!-- button onClick="speakit()">speak </button -->
+                <img src="img/mic-white.png" alt="" class="incorrect-retry"  onclick="recognizeSpeech();">
+            </button>
+            <button id="play" class="btn-main">play</button>
+        </div>
+         
+    <!-- div>
+        <p class="output"><em>...diagnostic messages</em></p>
+    </div -->
+        
+<!--        <img src="../img/pat.jpg" alt="Pat" class="visual-cue">
+-->	
+
+       <!--  <script src="../js/voice_record.js"></script> -->
+        <script src="js/main.js"></script>
+        <script src="js/voicetile/script.js"></script>
+      <script type="text/javascript" src="js/index.js"></script>
+     <script type="text/javascript" src="cordova.js"></script>
+    </div>
+</body>
+
+</html>
+

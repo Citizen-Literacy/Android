@@ -1,0 +1,11 @@
+{
+  "name": "org.apache.cordova.plugin.speechrecognizer-master",
+  "version": "1.0.0",
+  "description": "This software is heavily based on the work of https://github.com/poiuytrez/SpeechRecognizer",
+  "main": "SpeechRecognizer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

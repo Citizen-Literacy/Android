@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Citizen Literacy - Voice Recording</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style_main.css">
+</head>
+
+<body onload="fadeIn()">
+    <div class="container">
+
+
+        <div class="inactive" id="response-correct-wrapper">
+            <div class="correct-container" id="response-correct-container">
+                <img src="../img/correct.png" alt="" class="correct-tick">
+                <div class="second-row">
+                    <button class="btn-third" onclick="retryCorrect()">
+                        <img src="../img/retry.png" alt="" class="correct-retry">
+                    </button>
+                    <span class="separate" id="instance-2"></span>
+                    <button class="btn-third" onclick="nextUrl()">
+                        <img src="../img/next.png" alt="" class="correct-next">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="inactive" id="response-incorrect-wrapper">
+            <div class="incorrect-container" id="response-incorrect-container">
+                <img src="../img/sad.png" alt="" class="incorrect-tick">
+                <div class="second-row">
+                    <button class="btn-third btn-incorrect" onclick="retryIncorrect()">
+                        <img src="../img/retry.png" alt="" class="incorrect-retry">
+                    </button>
+                    <span class="separate" id="instance-2"></span>
+                    <button class="btn-third btn-incorrect" onclick="nextUrl()">
+                        <img src="../img/help.png" alt="" class="incorrect-next">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="header-container">
+            <a href="../index.html">
+                <i class="left"></i>
+                <img src="../img/home.png" alt="Home Button" class="home-link">
+            </a>
+            <img src="../img/logo_white.png" alt="=Logo White" class="header-logo">
+        </div>
+        
+        <p class="title">Click microphone and say the word you see, below.</p>
+
+<h1 class="hints">word</h1>
+
+        <div class="content">
+            <div id="container">
+
+                <div class="load-pie">
+                    <div class="load-left">
+                        <div class="left-load-block" id="left-load"> </div>
+                    </div>
+                    <div class="load-right">
+                        <div class="right-load-block" id="right-load"> </div>
+                    </div>
+                </div>
+            </div>
+<!-- <h1>Speech checker - add in querystring to this.</h1>
+--> <!-- <button onClick="speakit()">speak </button> -->
+
+   
+            <button id="record" class="btn-main" onClick="speakit()"> 
+            <!-- button onClick="speakit()">speak </button -->
+                <img src="../img/mic-white.png" alt="" class="incorrect-retry" >
+            </button>
+            <button id="play" class="btn-main">play</button>
+        </div>
+         
+    <!-- div>
+        <p class="output"><em>...diagnostic messages</em></p>
+    </div -->
+        
+<!--        <img src="../img/pat.jpg" alt="Pat" class="visual-cue">
+-->	
+
+       <!--  <script src="../js/voice_record.js"></script> -->
+        <script src="../js/main.js"></script>
+        <script src="../voicetile/script.js"></script>
+    </div>
+</body>
+
+</html>
+

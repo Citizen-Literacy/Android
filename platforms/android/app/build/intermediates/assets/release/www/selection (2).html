@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Citizen Literacy - Selection</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style_main.css">
+</head>
+
+<body >
+
+    <div class="container">
+
+        <div class="inactive" id="response-correct-wrapper">
+            <div class="correct-container" id="response-correct-container">
+                <img src="../img/correct.png" alt="" class="correct-tick">
+                <div class="second-row">
+                    <button class="btn-third" onclick="retryCorrect()">
+                        <img src="../img/retry.png" alt="" class="correct-retry">
+                    </button>
+                    <span class="separate" id="instance-2"></span>
+                    <button class="btn-third" onclick="nextUrl()">
+                        <img src="../img/next.png" alt="" class="correct-next">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="inactive" id="response-incorrect-wrapper">
+            <div class="incorrect-container" id="response-incorrect-container">
+                <img src="../img/sad.png" alt="" class="incorrect-tick">
+                <div class="second-row">
+                    <button class="btn-third btn-incorrect" onclick="retryIncorrect()">
+                    <img src="../img/retry.png" alt="" class="incorrect-retry">
+                    </button>
+                    <span class="separate" id="instance-2"></span>
+                    <button class="btn-third btn-incorrect" onclick="nextUrl()">
+                        <img src="../img/help.png" alt="" class="incorrect-next">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="header-container">
+            <a href="../index.html">
+                <i class="left"></i>
+                <img src="../img/home.png" alt="Home Button" class="home-link">
+            </a>
+            <img src="../img/logo_white.png" alt="=Logo White" class="header-logo">
+        </div>
+
+        <h1 class="title" onClick="sayit('Click play to hear a word then select the letters to spell the word you hear')">Select the letters (?)</h1>
+
+
+        <audio id="myAudio">
+          <source src="../media/sat.mp3" type="audio/mpeg">
+            <p>Your browser does not support the audio element. </p>
+             
+        </audio>
+        <script type="text/javascript">//<![CDATA[
+
+    window.onload=function(){
+		
+		fadeIn();
+      // 
+var buttons = document.querySelectorAll('.options'),
+    i;
+
+for(i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function() {
+        var pressed = document.getElementById('pressed');
+        pressed.value += this.value+" ";
+		pressed2.value += this.value+" ";
+		
+		//document.getElementById('pressed').value = 'sun';
+        if(pressed.value === pressed.dataset.valid) {
+			document.getElementById('pressed').value = 'sat';
+			window.speechSynthesis.cancel
+			var msg = new SpeechSynthesisUtterance("That is correct , the word is sat");     msg.lang = "en-GB";    window.speechSynthesis.speak(msg); 
+            retryCorrect()// do this as image display like my apps
+			//alert('That is correct');
+			//wait(4000); // wait 10ms
+			//pressed.value = "";
+        }
+        if(pressed.value.split(' ').length > pressed.dataset.buttons) {
+			 retryIncorrect();
+            //Start over
+           //wait(2000);
+		    pressed.value = "";
+			pressed2.value = "";
+			
+        }
+    }, false);
+}
+
+    }
+	
+	function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
+
+  //]]></script>
+
+ 
+ 
+<button style="display:none" class="btn-third btn-incorrect" onclick="retryIncorrect()">
+                        <img src="../img/retry.png" alt="" class="incorrect-retry" style="display:none">
+                    </button>
+                    <span class="separate" id="instance-2"></span>
+                    <button style="display:none" class="btn-third btn-incorrect" onclick="nextUrl()">
+                        <img src="../img/help.png" alt="" class="incorrect-next" >
+                    </button>
+                      <!-- button id="audio-play" class="btn-main" onclick="playAudio()" -->
+        <button id="audio-play" class="btn-main" onclick="sayit(quiz)">
+            <img src="../img/play.png" alt="" class="incorrect-retry">
+        </button>
+        
+<input align="middle" id="pressed"  type="text" data-valid="s a t " data-buttons="3" style="display:none;">
+<input align="middle" id="pressed2" type="text" data-valid="s a t " data-buttons="3" style="text-align: center;
+    color: white;
+    font-size: 92px;
+    background-color: #4ED3A7;
+    height: 120px;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 4px white;
+    border: none;
+    border-width: 0px;
+    left: auto;
+    right: auto;
+    display: block;
+    margin: auto;">
+   
+<div class="options-container">
+            <button  value="s" id="option1" class="options">s</button>
+            <button  value="a" id="option2" class="options">a</button>
+            <button  value="p" id="option3" class="options">p</button>
+            <button  value="t" id="option4" class="options">t</button>
+            <button  value="i" id="option5" class="options">i</button>
+            <button  value="n" id="option6" class="options">n</button>
+        </div>
+ <button id="retry" class="btn-main" onclick="retry()">
+            <img src="../img/retry.png" alt="Refresh Page" class="incorrect-retry" value="Refresh Page" onClick="window.location.reload();">
+        </button>
+        <div id="response-container"></div>
+
+
+        <script src="../js/main.js"></script>
+        <script src="../js/selection.js"></script>
+
+    </div>
+</body>
+
+</html>
